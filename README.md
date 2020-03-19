@@ -15,13 +15,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist webzop/yii2-notifications "*"
+php composer.phar require --prefer-dist jcabanillas/yii2-notifications "*"
 ```
 
 or add
 
 ```php
-"webzop/yii2-notifications": "*"
+"jcabanillas/yii2-notifications": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -35,13 +35,13 @@ Notifications is often used as an application module and configured in the appli
 [
     'modules' => [
         'notifications' => [
-            'class' => 'webzop\notifications\Module',
+            'class' => 'jcabanillas\notifications\Module',
             'channels' => [
                 'screen' => [
-                    'class' => 'webzop\notifications\channels\ScreenChannel',
+                    'class' => 'jcabanillas\notifications\channels\ScreenChannel',
                 ],
                 'email' => [
-                    'class' => 'webzop\notifications\channels\EmailChannel',
+                    'class' => 'jcabanillas\notifications\channels\EmailChannel',
                     'message' => [
                         'from' => 'example@email.com'
                     ],
@@ -60,7 +60,7 @@ Each notification is represented by a single class (typically stored in the  app
 namespace app\notifications;
 
 use Yii;
-use webzop\notifications\Notification;
+use jcabanillas\notifications\Notification;
 
 class AccountNotification extends Notification
 {
@@ -168,8 +168,8 @@ This module have a some pre-built channels, but you may want to write your own c
 ```php
 namespace app\channels;
 
-use webzop\notifications\Channel;
-use webzop\notifications\Notification;
+use jcabanillas\notifications\Channel;
+use jcabanillas\notifications\Notification;
 
 class VoiceChannel extends Channel
 {
@@ -194,7 +194,7 @@ You also should configure the channel in you application config:
 [
     'modules' => [
         'notifications' => [
-            'class' => 'webzop\notifications\Module',
+            'class' => 'jcabanillas\notifications\Module',
             'channels' => [
                 'voice' => [
                     'class' => 'app\channels\VoiceChannel',
@@ -211,7 +211,7 @@ You also should configure the channel in you application config:
 This channel is used to show small notifications as above image preview. The notifications will stored in database, so before using this channel, you have to run its migrations scripts:
 
 ```bash
-./yii migrate/up --migrationPath=vendor/webzop/yii2-notifications/migrations/
+./yii migrate/up --migrationPath=vendor/jcabanillas/yii2-notifications/migrations/
 ```
 
 So you can call the Notifications widget in your app layout to show generated notifications:
@@ -219,7 +219,7 @@ So you can call the Notifications widget in your app layout to show generated no
 ```html
 <div class="header">
     ...
-    <?php echo \webzop\notifications\widgets\Notifications::widget() ?>
+    <?php echo \jcabanillas\notifications\widgets\Notifications::widget() ?>
 
 </div>
 ```

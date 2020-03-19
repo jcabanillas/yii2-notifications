@@ -1,6 +1,6 @@
 <?php
 
-namespace webzop\notifications;
+namespace jcabanillas\notifications;
 
 use Yii;
 use yii\base\InvalidParamException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace webzop\notifications;
+namespace jcabanillas\notifications;
 
 use Yii;
 
@@ -35,7 +35,7 @@ abstract class Notification extends \yii\base\BaseObject
     /**
      * Determines if the notification can be sent.
      *
-     * @param  \webzop\notifications\Channel $channel
+     * @param  \jcabanillas\notifications\Channel $channel
      * @return bool
      */
     public function shouldSend($channel)

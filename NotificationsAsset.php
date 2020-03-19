@@ -1,13 +1,13 @@
 <?php
 
-namespace webzop\notifications;
+namespace jcabanillas\notifications;
 
 use yii\web\AssetBundle;
 
 /**
  * Class NotificationsAsset
  *
- * @package webzop\notifications
+ * @package jcabanillas\notifications
  */
 class NotificationsAsset extends AssetBundle
 {

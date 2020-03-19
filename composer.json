@@ -1,5 +1,5 @@
 {
-    "name": "webzop/yii2-notifications",
+    "name": "jcabanillas/yii2-notifications",
     "description": "Notifications module for Yii2",
     "type": "yii2-extension",
     "keywords": [
@@ -10,9 +10,9 @@
     ],
     "authors": [
         {
-            "name": "Gonçalo Esteves",
-            "email": "goncalo.p.esteves@gmail.com",
-            "homepage": "https://webzop.com",
+            "name": "Javier Cabanillas",
+            "email": "jcabanillas@bitevolution.net",
+            "homepage": "https://bitevolution.net",
             "role": "Developer"
         }
     ],
@@ -22,11 +22,11 @@
     },
     "autoload": {
         "psr-4": {
-            "webzop\\notifications\\": ""
+            "jcabanillas\\notifications\\": ""
         }
     },
     "extra": {
-        "bootstrap": "webzop\\notifications\\Bootstrap"
+        "bootstrap": "jcabanillas\\notifications\\Bootstrap"
     },
     "repositories": [
         {

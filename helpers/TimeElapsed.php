@@ -1,6 +1,6 @@
 <?php
 
-namespace webzop\notifications\helpers;
+namespace jcabanillas\notifications\helpers;
 
 use Yii;
 
