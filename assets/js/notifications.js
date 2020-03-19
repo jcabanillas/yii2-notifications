@@ -16,7 +16,7 @@ var Notifications = (function(opts) {
         pollInterval: 60000,
         xhrTimeout: 2000,
         readLabel: 'read',
-        markAsReadLabel: 'mark as read'
+        markAsReadLabel: 'marcar como leído'
     }, opts);
 
     /**
