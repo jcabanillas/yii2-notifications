@@ -4,7 +4,8 @@ namespace jcabanillas\notifications\helpers;
 
 use Yii;
 
-class TimeElapsed {
+class TimeElapsed
+{
 
     /* time intervals in seconds */
     public static $intervals = [
@@ -24,18 +25,18 @@ class TimeElapsed {
      * Example Output(s):
      *     10 hours ago
      *
-     * @param string  $fromTime start date time
+     * @param string $fromTime start date time
      * @param boolean $human if true returns an approximate human friendly output. If set to `false`,
      * will attempt an exact conversion of time intervals.
-     * @param string  $toTime end date time (defaults to current system time)
-     * @param string  $append the string to append for the converted elapsed time. Defaults to ' ago'.
+     * @param string $toTime end date time (defaults to current system time)
+     * @param string $append the string to append for the converted elapsed time. Defaults to ' ago'.
      *
      * @return string
      */
     public static function timeElapsed($fromTime = null, $human = true, $toTime = null, $append = null)
     {
         if ($fromTime != null) {
-            if(!is_numeric($fromTime)) {
+            if (!is_numeric($fromTime)) {
                 $fromTime = strtotime($fromTime);
             }
 
@@ -50,8 +51,8 @@ class TimeElapsed {
      * Example Output(s):
      *     10 hours ago
      *
-     * @param int     $interval time interval in seconds
-     * @param string  $append the string to append for the converted elapsed time. Defaults to ' ago'.
+     * @param int $interval time interval in seconds
+     * @param string $append the string to append for the converted elapsed time. Defaults to ' ago'.
      * @param boolean $human if true returns an approximate human friendly output. If set to `false`,
      * will attempt an exact conversion of time intervals.
      *
@@ -62,6 +63,7 @@ class TimeElapsed {
         $intervals = static::$intervals;
         $elapsed = '';
 
+        /*
         if ($append === null) {
             $append = ' ' . Yii::t('modules/notifications', 'ago');
         }
@@ -95,6 +97,40 @@ class TimeElapsed {
         } else {
             $elapsed = static::time2String($interval, $intervals) . $append;
         }
+        */
+        if ($append === null) {
+            $append = Yii::t('modules/notifications', 'ago') . ' ';
+        }
+        if ($human) {
+            if ($interval <= 0) {
+                $elapsed = $append . Yii::t('modules/notifications', 'a moment');
+            } elseif ($interval < 60) {
+                $elapsed = $append . Yii::t('modules/notifications', '{n, plural, one{one second} other{# seconds}}',
+                        ['n' => $interval]);
+            } elseif ($interval >= 60 && $interval < $intervals['hour']) {
+                $interval = floor($interval / $intervals['minute']);
+                $elapsed = $append . Yii::t('modules/notifications', '{n, plural, one{one minute} other{# minutes}}',
+                        ['n' => $interval]);
+            } elseif ($interval >= $intervals['hour'] && $interval < $intervals['day']) {
+                $interval = floor($interval / $intervals['hour']);
+                $elapsed = $append . Yii::t('modules/notifications', '{n, plural, one{one hour} other{# hours}}', ['n' => $interval]);
+            } elseif ($interval >= $intervals['day'] && $interval < $intervals['week']) {
+                $interval = floor($interval / $intervals['day']);
+                $elapsed = $append . Yii::t('modules/notifications', '{n, plural, one{one day} other{# days}}', ['n' => $interval]);
+            } elseif ($interval >= $intervals['week'] && $interval < $intervals['month']) {
+                $interval = floor($interval / $intervals['week']);
+                $elapsed = $append . Yii::t('modules/notifications', '{n, plural, one{one week} other{# weeks}}', ['n' => $interval]);
+            } elseif ($interval >= $intervals['month'] && $interval < $intervals['year']) {
+                $interval = floor($interval / $intervals['month']);
+                $elapsed = $append . Yii::t('modules/notifications', '{n, plural, one{one month} other{# months}}',
+                        ['n' => $interval]);
+            } elseif ($interval >= $intervals['year']) {
+                $interval = floor($interval / $intervals['year']);
+                $elapsed = $append . Yii::t('modules/notifications', '{n, plural, one{one year} other{# years}}', ['n' => $interval]);
+            }
+        } else {
+            $elapsed = $append . static::time2String($interval, $intervals);
+        }
         return $elapsed;
     }
 
@@ -105,7 +141,7 @@ class TimeElapsed {
      *    1 year 5 months 3 days ago
      *
      * @param integer $timeline elapsed number of seconds
-     * @param array   $intervals configuration of time intervals in seconds
+     * @param array $intervals configuration of time intervals in seconds
      *
      * @return string
      */
@@ -123,4 +159,5 @@ class TimeElapsed {
     }
 
 }
+
 ?>
