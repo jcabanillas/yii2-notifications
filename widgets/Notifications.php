@@ -72,7 +72,7 @@ class Notifications extends \yii\base\Widget
         $html = Html::beginTag('li', $this->options);
         // $html .= Html::beginTag('a', ['href' => '#', 'class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']);
         $html .= Html::beginTag('a', $this->linkOptions);
-        $html .= Html::tag('span', '', ['class' => 'kt-header__topbar-icon kt-pulse kt-pulse--brand glyphicon glyphicon-bell']);
+        $html .= Html::beginTag('span', ['class' => 'kt-header__topbar-icon kt-pulse kt-pulse--brand glyphicon glyphicon-bell']);
 
         $count = self::getCountUnseen();
         /*
@@ -90,7 +90,7 @@ class Notifications extends \yii\base\Widget
         if ($count) {
             $html .= '<span class="kt-pulse__ring"></span>';
         }
-
+        $html .= Html::endTag('span');
         $html .= Html::endTag('a');
         $html .= Html::begintag('div', ['class' => 'dropdown-menu', 'style' => "border: none;
     content: none;"]);
