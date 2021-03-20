@@ -48,9 +48,11 @@ class TelegramChannel extends Channel
     public function init()
     {
         parent::init();
+        /*
         if (!isset($this->botToken)) {
             throw new InvalidConfigException('Bot token is undefined');
         }
+        */
 
         if (!isset($this->httpClient)) {
             $this->httpClient = [
@@ -69,6 +71,7 @@ class TelegramChannel extends Channel
      */
     public function send(Notification $notification)
     {
+        $this->botToken = $notification->getBotToken();
         $subject = (string)$notification->getTitle(); // Html::a((string)$notification->getTitle(), $notificacion->route);
         // echo "{$subject}<br /><br />";
         // exit;

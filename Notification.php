@@ -17,6 +17,8 @@ abstract class Notification extends \yii\base\BaseObject
 
     public $userId = 0;
 
+    public $botToken = null;
+
     public $data = [];
 
     /**
@@ -103,6 +105,25 @@ abstract class Notification extends \yii\base\BaseObject
      */
     public function setUserId($id){
         $this->userId = $id;
+        return $this;
+    }
+
+    /**
+     * Gets the UserId
+     *
+     * @return array
+     */
+    public function getBotToken(){
+        return $this->botToken;
+    }
+
+    /**
+     * Sets the UserId
+     *
+     * @return self
+     */
+    public function setBotToken($token){
+        $this->botToken = $token;
         return $this;
     }
 
