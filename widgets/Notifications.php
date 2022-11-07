@@ -29,6 +29,7 @@ class Notifications extends \yii\base\Widget
         'class' => 'glyphicon glyphicon-bell'
     ];
     public $headerOptions = [];
+    public $menuOptions = [];
     public $footerOptions = [];
 
     /**
