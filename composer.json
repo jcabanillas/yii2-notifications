@@ -11,14 +11,15 @@
     "authors": [
         {
             "name": "Javier Cabanillas",
-            "email": "jcabanillas@bitevolution.net",
-            "homepage": "https://bitevolution.net",
+            "email": "jcabanillas@rubiko.mx",
+            "homepage": "https://rubiko.mx",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=5.6",
-        "yiisoft/yii2": "*"
+        "php": ">=7.1",
+        "yiisoft/yii2": "~2.0.13",
+        "minishlink/web-push": "^5.2"
     },
     "autoload": {
         "psr-4": {
