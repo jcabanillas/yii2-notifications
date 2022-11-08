@@ -111,9 +111,9 @@ HTML;
         */
         if ($count) {
             // $countOptions['style'] = 'display: none;';
-            $html .= Html::beginTag($this->linkTag, array_merge($this->linkOptions, ['class' => 'pulse pulse-primary']));
+            $html .= Html::beginTag($this->linkTag, array_merge($this->linkOptions,$this->countOptions));
         } else {
-            $html .= Html::beginTag($this->linkTag, array_merge($this->linkOptions));
+            $html .= Html::beginTag($this->linkTag, $this->linkOptions);
         }
         $html .= Html::beginTag($this->spanTag, $this->spanOptions);
         // $countTag = ArrayHelper::remove($countOptions, 'tag', 'span');
