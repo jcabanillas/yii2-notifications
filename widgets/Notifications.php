@@ -133,7 +133,7 @@ HTML;
         $html .= Html::begintag('div', $this->menuOptions);
         $header = Html::tag($this->titleTag, Yii::t('modules/notifications', 'Notifications'), $this->titleOptions);
         $html .= Html::tag($this->headerTag, $header, $this->headerOptions);
-        $html .= Html::a(Yii::t('modules/notifications', 'Mark all as read'), '#', ['class' => 'read-all pull-right']);
+        $html .= Html::a(Yii::t('modules/notifications', 'Mark all as read'), '#', ['class' => 'read-all pull-right m-4']);
         $html .= Html::begintag('div', ['class' => 'notifications-list']);
         //$html .= Html::tag('div', '<span class="ajax-loader"></span>', ['class' => 'loading-row']);
         $html .= Html::tag('div', Html::tag('span', Yii::t('modules/notifications', 'There are no notifications to show'), ['style' => 'display: none;']), ['class' => 'empty-row']);
