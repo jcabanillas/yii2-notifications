@@ -50,6 +50,8 @@ HTML;
     public $titleOptions = [];
 
     public $menuOptions = [];
+
+    public $footer = null;
     public $footerOptions = [];
 
     /**
@@ -136,9 +138,8 @@ HTML;
         //$html .= Html::tag('div', '<span class="ajax-loader"></span>', ['class' => 'loading-row']);
         $html .= Html::tag('div', Html::tag('span', Yii::t('modules/notifications', 'There are no notifications to show'), ['style' => 'display: none;']), ['class' => 'empty-row']);
         $html .= Html::endTag('div');
-
-        $footer = Html::a(Yii::t('modules/notifications', 'View all'), ['/notifications/default/index']);
-        $html .= Html::tag('div', $footer, $this->footerOptions);
+        $this->footer = !is_null($this->footer) ?: Html::a(Yii::t('modules/notifications', 'View all'), ['/notifications/default/index']);
+        $html .= Html::tag('div', $this->footer, $this->footerOptions);
         $html .= Html::endTag('div');
         $html .= Html::endTag($this->containerTag);
 
