@@ -69,7 +69,7 @@ class DefaultController extends Controller
             ->from('{{%notifications}}')
             ->andWhere(['or', 'user_id = 0', 'user_id = :user_id'], [':user_id' => $userId])
             ->orderBy(['id' => SORT_DESC])
-            ->limit(10)
+            ->limit(5)
             ->all();
         $notifs = $this->prepareNotifications($list);
         $this->ajaxResponse(['list' => $notifs]);
