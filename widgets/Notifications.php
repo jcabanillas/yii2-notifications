@@ -45,6 +45,10 @@ HTML;
     public $headerTag = 'div';
 
     public $headerOptions = [];
+
+    public $titleTag = 'h3';
+    public $titleOptions = [];
+
     public $menuOptions = [];
     public $footerOptions = [];
 
@@ -111,7 +115,7 @@ HTML;
         */
         if ($count) {
             // $countOptions['style'] = 'display: none;';
-            $html .= Html::beginTag($this->linkTag, array_merge($this->linkOptions,$this->countOptions));
+            $html .= Html::beginTag($this->linkTag, array_merge($this->linkOptions, $this->countOptions));
         } else {
             $html .= Html::beginTag($this->linkTag, $this->linkOptions);
         }
@@ -120,12 +124,14 @@ HTML;
         // $html .= Html::tag($countTag, $count, $countOptions);
         $html .= $this->spanContent;
         $html .= Html::endTag($this->spanTag);
+        if ($count) {
+            $html .= '<span class="pulse-ring"></span>';
+        }
         $html .= Html::endTag($this->linkTag);
         $html .= Html::begintag('div', $this->menuOptions);
-        $header = Html::a(Yii::t('modules/notifications', 'Mark all as read'), '#', ['class' => 'read-all pull-right']);
-        $header .= Yii::t('modules/notifications', 'Notifications');
+        $header = Html::tag($this->titleTag, Yii::t('modules/notifications', 'Notifications'), $this->titleOptions);
         $html .= Html::tag($this->headerTag, $header, $this->headerOptions);
-
+        $html .= Html::a(Yii::t('modules/notifications', 'Mark all as read'), '#', ['class' => 'read-all pull-right']);
         $html .= Html::begintag('div', ['class' => 'notifications-list']);
         //$html .= Html::tag('div', '<span class="ajax-loader"></span>', ['class' => 'loading-row']);
         $html .= Html::tag('div', Html::tag('span', Yii::t('modules/notifications', 'There are no notifications to show'), ['style' => 'display: none;']), ['class' => 'empty-row']);

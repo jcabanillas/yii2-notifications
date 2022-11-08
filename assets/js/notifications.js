@@ -97,7 +97,8 @@ var Notifications = (function(opts) {
         });
     };
 
-    elem.find('> a[data-toggle="dropdown"]').on('click', function(e){
+    // elem.find('> a[data-toggle="dropdown"]').on('click', function(e){
+    elem.find('> a[data-toggle="dropdown"]').hover(function (e) {
         if(!$(this).parent().hasClass('show')){
             showList();
         }
