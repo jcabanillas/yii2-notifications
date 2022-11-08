@@ -28,6 +28,8 @@ class Notifications extends \yii\base\Widget
     public $spanOptions = [
         'class' => 'glyphicon glyphicon-bell'
     ];
+    public $headerTag = 'div';
+    
     public $headerOptions = [];
     public $menuOptions = [];
     public $footerOptions = [];
@@ -103,7 +105,7 @@ class Notifications extends \yii\base\Widget
         $html .= Html::begintag('div', $this->menuOptions);
         $header = Html::a(Yii::t('modules/notifications', 'Mark all as read'), '#', ['class' => 'read-all pull-right']);
         $header .= Yii::t('modules/notifications', 'Notifications');
-        $html .= Html::tag('div', $header, $this->headerOptions);
+        $html .= Html::tag($this->headerTag, $header, $this->headerOptions);
 
         $html .= Html::begintag('div', ['class' => 'notifications-list']);
         //$html .= Html::tag('div', '<span class="ajax-loader"></span>', ['class' => 'loading-row']);
