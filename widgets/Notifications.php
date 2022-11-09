@@ -13,7 +13,6 @@ use jcabanillas\notifications\NotificationsAsset;
 
 class Notifications extends \yii\base\Widget
 {
-
     public $containerTag = 'li';
 
     public $options = ['class' => 'dropdown nav-notifications'];
